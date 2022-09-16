@@ -1,0 +1,36 @@
+.timeshow{
+    background-color: rgb(60, 224, 126);
+    width: 500px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.map{
+    background-image: url('images/背景图.jpg');
+    background-size: 100%;
+    width:600px;
+    height: 600px;
+    margin: 10px;
+
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.day{
+    display: flex;
+}
+.hour{
+    display: flex;
+}
+.minute{
+    display: flex;
+}
+
+.number{
+    font-size: 80px;
+}
