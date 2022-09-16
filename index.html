@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tmana</title>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1{
+            color: rgb(240, 71, 71);
+            text-align:center;
+        }
+        #a{
+            align-self: stretch;
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tmana</h1>
+    <div class="timeshow">
+        <div class="day">
+            <div id = "day" class = "number">0</div>
+            <div style="line-height: 150px;">天</div>
+        </div>
+        <div class="hour">
+            <div id = "hour" class = "number">0</div>
+            <div style="line-height: 150px;">时</div>
+        </div>
+        <div class="minute">
+            <div id = "minute" class = "number">0</div>
+            <div style="line-height: 150px;">分</div>
+        </div>
+    </div>
+    <button onclick="timeGogo()">时间流动</button>
+    <div class="map">
+        <button id="pubu" onclick="p = clickpos(p , p1)">瀑布</button>
+        <button id="yingdi" onclick="p = clickpos(p , p0)">营地</button>
+        <div id="a">
+            <button id="haian" onclick="p = clickpos(p , p2)">海岸</button>
+            <button id="zhulin" onclick="p = clickpos(p , p3)">竹林</button>
+        </div>
+    </div>
+    <script>
+        let p = "";
+        const p0 = "yingdi";//营地
+        const p1 = "pubu";//瀑布
+        const p2 = "haian";//海岸
+        const p3 = "zhulin";//竹林
+        let time = 0;
+
+        setInterval("timeShow(time)", 100)
+        setInterval("timeGo()", 1000)
+        setInterval("die()", 100)
+
+        function timeShow(time){
+            for(day = 0;  time >= 1440; day++){
+                time -= 1440;
+            }
+            for(hour = 0;  time >= 60; hour++){
+                time -= 60;
+            }
+            minute = time;
+            document.getElementById("day").innerHTML = day;
+            document.getElementById("hour").innerHTML = hour;
+            document.getElementById("minute").innerHTML = minute;
+            
+        }
+        function timeGo(){
+            time = time + 1;
+        }
+        function timeGogo(){
+            time = time + 1440;
+        }
+        function clickpos(plast , p){
+            switch (plast) {
+                case "pubu":
+                    document.getElementById("pubu").innerHTML = "瀑布";
+                    break;
+                case "yingdi":
+                    document.getElementById("yingdi").innerHTML = "营地";
+                    break;
+                case "haian":
+                    document.getElementById("haian").innerHTML = "海岸";
+                    break;
+                case "zhulin":
+                    document.getElementById("zhulin").innerHTML = "竹林";
+                    break;
+                default:
+                    alert("出错了。");
+            }
+            switch (p) {
+                case p1:
+                    document.getElementById("pubu").innerHTML = "绍帅";
+                    switch(plast){
+                        case p0:
+                            time = time + 40;
+                            break;
+                        case p2:
+                            time = time + 100;
+                            break;
+                        case p3:
+                            time = time + 190;
+                            break;
+                        default:
+                            alert("出错了。")
+                    }
+                    return p1;
+                    break;
+                case p0:
+                    document.getElementById("yingdi").innerHTML = "绍帅";
+                    switch (plast) {
+                        case p1:
+                            time = time + 40;
+                            break;
+                        case p2:
+                            time = time + 120;
+                            break;
+                        case p3:
+                            time = time + 140;
+                            break;
+                        default:
+                            alert("出错了。")
+                    }
+                    return p0;
+                    break;
+                case p2:
+                    document.getElementById("haian").innerHTML = "绍帅";
+                    switch (plast) {
+                        case p0:
+                            time = time + 120;
+                            break;
+                        case p1:
+                            time = time + 100;
+                            break;
+                        case p3:
+                            time = time + 2400;
+                            break;
+                        default:
+                            alert("出错了。")
+                    }
+                    return p2;
+                    break;
+                case p3:
+                    document.getElementById("zhulin").innerHTML = "绍帅";
+                    switch (plast) {
+                        case p0:
+                            time = time + 140;
+                            break;
+                        case p1:
+                            time = time + 190;
+                            break;
+                        case p2:
+                            time = time + 240;
+                            break;
+                        default:
+                            alert("出错了。")
+                    }
+                    return p3;
+                    break;
+                default:
+                    alert("出错了。");
+            }
+        }
+        function die(){
+            if(time >= 14400){
+                document.write("你死了");
+            }
+        }
+
+    </script>
+</body>
+</html>
