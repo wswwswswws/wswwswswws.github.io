@@ -58,7 +58,7 @@
 
         setInterval("timeShow(time)", 100)
         setInterval("timeGo()", 1000)
-        setInterval("die()", 100)
+        
 
         function timeShow(time){
             for(day = 0;  time >= 1440; day++){
@@ -169,11 +169,7 @@
                     alert("出错了。");
             }
         }
-        function die(){
-            if(time >= 14400){
-                document.write("你死了");
-            }
-        }
+       
 
     </script>
 </body>
